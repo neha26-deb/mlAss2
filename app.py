@@ -61,7 +61,7 @@ if uploaded_file:
         X = df.drop("target", axis=1)
         y_true = df["target"]
 
-        model_path = f"model/{model_name.replace(' ', '_')}.pkl"
+        model_path = f"model/{model_name}.pkl"
 
         if not os.path.exists(model_path):
             st.error(f"Model file not found: {model_path}")
