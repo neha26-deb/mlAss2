@@ -11,7 +11,7 @@ st.title("ML Classification Model Demo")
 # -----------------------------
 st.subheader("Download Sample Test Data")
 
-TEST_DATA_PATH = "data/test/heart_test.csv"   # adjust path if needed
+TEST_DATA_PATH = "data/heart_test.csv"   # adjust path if needed
 
 st.title("ML Classification Model Demo")
 if os.path.exists(TEST_DATA_PATH):
