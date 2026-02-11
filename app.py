@@ -20,7 +20,7 @@ st.caption("Upload test data, choose a model, and evaluate performance")
 # -----------------------------
 st.subheader("📥 Download Sample Test Data")
 
-TEST_DATA_PATH = "data/test/heart_test.csv"  # change if needed
+TEST_DATA_PATH = "data/heart_test.csv"  # change if needed
 
 if os.path.exists(TEST_DATA_PATH):
     test_df = pd.read_csv(TEST_DATA_PATH)
