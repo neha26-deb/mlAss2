@@ -58,8 +58,6 @@ model_name = st.sidebar.selectbox(
 
 uploaded_file = st.sidebar.file_uploader("Upload Test CSV (with target column)", type=["csv"])
 
-st.sidebar.markdown("---")
-st.sidebar.info("ℹ️ The uploaded CSV must contain a `target` column.")
 
 # -----------------------------
 # Main Evaluation Logic
