@@ -20,13 +20,13 @@ st.set_page_config(
 )
 
 # Main Heading
-st.title("📊 ML Assign 2")
+st.title("🤖 Machine Learning Assignment 2")
 
 # Subheading
-st.subheader("Classification Problems")
+st.subheader("Implementation, Evaluation and Deployment of Classification Models")
 
 # Normal Text Instruction
-st.write("Upload and test data for Streamlit app.")
+# st.write("Upload and test data for Streamlit app.")
 # st.title("🤖 Machine Learning Assignment 2")
 # st.markdown('<h1 class="main-header">Implementation, Evaluation and Deployment of Classification Models</h1>', unsafe_allow_html=True)
 # st.title("🤖 Machine Learning Assignment 2 – Implementation, Evaluation and Deployment of Classification Models ")
