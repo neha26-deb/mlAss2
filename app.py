@@ -75,8 +75,8 @@ st.sidebar.info("ℹ️ Upload test data, select a trained model, and evaluate p
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
 
-    st.subheader("🗂 Uploaded Test Data Preview")
-    st.dataframe(df.head(), use_container_width=True)
+    # st.subheader("🗂 Uploaded Test Data Preview")
+    # st.dataframe(df.head(), use_container_width=True)
 
     if "target" not in df.columns:
         st.error("❌ Uploaded CSV must contain a `target` column for evaluation.")
