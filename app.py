@@ -29,7 +29,7 @@ st.markdown("---")
 # -----------------------------
 st.subheader("📥 Download Sample Test Data")
 
-TEST_DATA_PATH = "data/testdata.csv"  # must match your saved test CSV
+TEST_DATA_PATH = "data/heart_test.csv"  # must match your saved test CSV
 
 if os.path.exists(TEST_DATA_PATH):
     test_df = pd.read_csv(TEST_DATA_PATH)
@@ -38,11 +38,11 @@ if os.path.exists(TEST_DATA_PATH):
     st.download_button(
         label="⬇️ Download Sample Test CSV",
         data=csv_bytes,
-        file_name="heart_test.csv",
+        file_name="sample_test_data.csv",
         mime="text/csv"
     )
 else:
-    st.warning("⚠️ Sample test CSV not found. Please ensure `data/testdata.csv` exists.")
+    st.warning("⚠️ Sample test CSV not found. Please ensure `data/sample_test_data.csv` exists.")
 
 st.markdown("---")
 
