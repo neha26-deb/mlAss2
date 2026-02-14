@@ -5,7 +5,6 @@
 The objective of this assignment is to implement multiple machine learning classification models on a real-world dataset, evaluate their performance using standard metrics, and deploy an interactive Streamlit web application to demonstrate the models.  
 Users can upload test data, select a trained model, and visualize the model performance through evaluation metrics, classification report, and confusion matrix.
 
----
 
 ## Dataset Description
 **Dataset Name:** Heart Disease Dataset from Kaggle
@@ -46,16 +45,15 @@ Users can upload test data, select a trained model, and visualize the model perf
 
 - **target:** Target variable indicating presence (1) or absence (0) of heart disease
 
-**Dataset Statistics** -
+**Dataset Statistics:** 
  - **Number of Features** - 13 
  - **Number of Instances** - 1025 
  - **Type** - Binary Classification  
 
----
 
 ## Models Used and Evaluation Metrics
 
-**Implemented Models**
+### Implemented Models
 
 - Logistic Regression  
 - Decision Tree Classifier  
@@ -65,9 +63,7 @@ Users can upload test data, select a trained model, and visualize the model perf
 - Ensemble Model - XGBoost 
 
 
-<br>
-
-**Evaluation Metrics**
+### Evaluation Metrics
 
 - Accuracy  
 - AUC Score  
@@ -117,16 +113,17 @@ Users can upload test data, select a trained model, and visualize the model perf
     </tr>
     <tr style="border: 1px solid #444;">
       <td style="padding: 10px; border: 1px solid #444; text-align: left;">XGBoost (Ensemble)</td>
-      <td style="border: 1px solid #444;">0.995</td><td style="border: 1px solid #444;">1.000</td><td style="border: 1px solid #444;">1.000</td>
+      <td style="border: 1px solid #444;">0.995</td><td style="border: 1px solid #444;">0.997</td><td style="border: 1px solid #444;">1.000</td>
       <td style="border: 1px solid #444;">0.990</td><td style="border: 1px solid #444;">0.995</td><td style="border: 1px solid #444;">0.990</td>
     </tr>
   </tbody>
 </table>
 
+<br>
 
 ### Observations about Model Performance
 
- <table style="width:100%; border-collapse: collapse; text-align: center;">
+<table style="width:100%; border-collapse: collapse; text-align: center;">
   <thead>
     <tr style="border: 1px solid #444;">
       <th style="padding: 10px; border: 1px solid #444;">ML Model Name</th>
@@ -136,19 +133,19 @@ Users can upload test data, select a trained model, and visualize the model perf
   <tbody>
     <tr style="border: 1px solid #444;">
       <td style="padding: 10px; border: 1px solid #444; text-align: left;">Logistic Regression</td>
-      <td style="border: 1px solid #444;">Provides a strong baseline with good interpretability and stable performance on linearly separable patterns. High Recall (0.914) indicates strong detection of heart disease cases (few false negatives). However, lower Precision (0.762) shows more false positives. Strong AUC (0.930) indicates good class separability.</td>
+      <td style="border: 1px solid #444;">Provides a strong baseline with good interpretability and stable performance on linearly separable patterns. High Recall (0.914) indicates strong detection of heart disease cases (few false negatives). Strong AUC (0.935) indicates good class separability.</td>
     </tr>
     <tr style="border: 1px solid #444;">
       <td style="padding: 10px; border: 1px solid #444; text-align: left;">Decision Tree</td>
-      <td style="border: 1px solid #444;">Captures non-linear relationships well but is prone to overfitting without proper depth control. Extremely high Precision (1.000) means no false positives. High Recall (0.971) shows very few missed cases. Very strong MCC (0.971) indicates balanced performance. Slight risk of overfitting due to near-perfect metrics.</td><
+      <td style="border: 1px solid #444;">Captures non-linear relationships well but is prone to overfitting without proper depth control. Extremely high Precision (1.000) means no false positives. High Recall (0.990) shows very few missed cases. Very strong MCC (0.990) indicates balanced performance. Slight risk of overfitting due to near-perfect metrics.</td>
     </tr>
     <tr style="border: 1px solid #444;">
       <td style="padding: 10px; border: 1px solid #444; text-align: left;">kNN</td>
-      <td style="border: 1px solid #444;">Performance is sensitive to the choice of k and feature scaling; performs well when data is normalized. Balanced Precision and Recall indicate stable performance. Good AUC (0.963) shows strong discrimination. Moderate MCC (0.727) suggests reliable classification.</td>
+      <td style="border: 1px solid #444;">Performance is sensitive to the choice of k and feature scaling; performs well when data is normalized. Balanced Precision and Recall indicate stable performance. Good AUC (0.990) shows strong discrimination.</td>
     </tr>
     <tr style="border: 1px solid #444;">
       <td style="padding: 10px; border: 1px solid #444; text-align: left;">Naive Bayes</td>
-      <td style="border: 1px solid #444;">Fast and simple model; performs reasonably well despite the independence assumption among features. Good Recall (0.876) but moderate Precision. AUC (0.904) shows decent class separation.</td>
+      <td style="border: 1px solid #444;">Fast and simple model; performs reasonably well despite the independence assumption among features. Good Recall (0.876) but moderate Precision. AUC (0.910) shows decent class separation.</td>
     </tr>
     <tr style="border: 1px solid #444;">
       <td style="padding: 10px; border: 1px solid #444; text-align: left;">Random Forest (Ensemble)</td>
@@ -156,60 +153,54 @@ Users can upload test data, select a trained model, and visualize the model perf
     </tr>
     <tr style="border: 1px solid #444;">
       <td style="padding: 10px; border: 1px solid #444; text-align: left;">XGBoost (Ensemble)</td>
-      <td style="border: 1px solid #444;">Achieves the best overall performance with high AUC and MCC due to boosting, regularization, and optimized tree learning.</td><
+      <td style="border: 1px solid #444;">Achieves the best overall performance with high AUC and MCC due to boosting, regularization, and optimized tree learning.</td>
     </tr>
   </tbody>
 </table>
 
-🚀 Streamlit App Deployment
+<br>
 
-The project has been deployed on Streamlit Community Cloud.
+## Streamlit Application Features
 
-Live App Link: [Insert Streamlit App URL]
-
-Features included:
-
-Dataset upload option (CSV)
-
-Model selection dropdown
-
-Display of evaluation metrics
-
-Confusion matrix / classification report
-
-📂 Repository Structure
-
-project-folder/
-│── app.py (or streamlit_app.py)
-│── requirements.txt
-│── README.md
-│── model/ (saved model files for all implemented models)
-
-📋 Requirements
-
-Dependencies required for deployment (add more if used):
-
-streamlit
-scikit-learn
-numpy
-pandas
-matplotlib
-seaborn
-xgboost
-
-✅ Final Submission Checklist
-
-[ ] GitHub repo link works
-
-[ ] Streamlit app link opens correctly
-
-[ ] App loads without errors
-
-[ ] All required features implemented
-
-[ ] README.md updated and added in the submitted PDF
-
-
-This template follows the exact structure required in your assignment instructions. Once you run your models, you just need to **fill in the metrics table and observations**, and paste your dataset link plus Streamlit app link.  
-
-Would you like me to also draft a **sample filled-in version** (with hypothetical dataset and metrics) so you can see how a completed README might look?
+<table style="width:100%; border-collapse: collapse; text-align: center;">
+  <thead>
+    <tr style="border: 1px solid #444;">
+      <th style="padding: 10px; border: 1px solid #444;">Feature</th>
+      <th style="border: 1px solid #444;">Description</th>  
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border: 1px solid #444;">
+      <td style="padding: 10px; border: 1px solid #444; text-align: left;">Interactive Model Selection</td>
+      <td style="border: 1px solid #444;">Users can select from multiple trained classifiers (Logistic Regression, Decision Tree, KNN, Naive Bayes, Random Forest, XGBoost) via a dropdown menu.</td>
+    </tr>
+    <tr style="border: 1px solid #444;">
+      <td style="padding: 10px; border: 1px solid #444; text-align: left;">Test Data Upload</td>
+      <td style="border: 1px solid #444;">The application allows users to upload a CSV file containing test samples for model evaluation.</td>
+    </tr>
+    <tr style="border: 1px solid #444;">
+      <td style="padding: 10px; border: 1px solid #444; text-align: left;">Sample Test Data Download</td>
+      <td style="border: 1px solid #444;">A pre-generated test dataset can be downloaded directly from the application for quick evaluation and reproducibility.</td>
+    </tr>
+    <tr style="border: 1px solid #444;">
+      <td style="padding: 10px; border: 1px solid #444; text-align: left;">Automated Model Loading</td>
+      <td style="border: 1px solid #444;">The selected trained model is dynamically loaded from disk using joblib, enabling seamless switching between classifiers.</td>
+    </tr>
+    <tr style="border: 1px solid #444;">
+      <td style="padding: 10px; border: 1px solid #444; text-align: left;">Real-time Predictions</td>
+      <td style="border: 1px solid #444;">The application performs real-time inference on uploaded test data and generates predictions instantly.</td>
+    </tr>
+    <tr style="border: 1px solid #444;">
+      <td style="padding: 10px; border: 1px solid #444; text-align: left;">Comprehensive Evaluation Metrics</td>
+      <td style="border: 1px solid #444;">Displays Accuracy, AUC Score, Precision, Recall, F1-score and MCC Score in a concise metric dashboard.</td>
+    </tr>
+    <tr style="border: 1px solid #444;">
+      <td style="padding: 10px; border: 1px solid #444; text-align: left;">Formatted Classification Report</td>
+      <td style="border: 1px solid #444;">Presents class-wise Precision, Recall, F1-score, and Support in a clean, tabular format suitable for reporting.</td>
+    </tr>
+    <tr style="border: 1px solid #444;">
+      <td style="padding: 10px; border: 1px solid #444; text-align: left;">Confusion Matrix Visualization</td>
+      <td style="border: 1px solid #444;">Visualizes the confusion matrix as a heatmap for intuitive interpretation of true positives, false positives, true negatives, and false negatives.</td>
+    </tr>
+  </tbody>
+</table>
