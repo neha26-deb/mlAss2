@@ -10,44 +10,56 @@ from sklearn.metrics import (
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="ML Classification Demo", layout="wide")
+# -----------------------------
+# Page Config
+# -----------------------------
+st.set_page_config(
+    page_title="Heart Disease Classification Dashboard",
+    page_icon="🫀",
+    layout="wide"
+)
 
-st.title("🔍 ML Classification Model Demo")
-st.caption("Upload test data, choose a model, and evaluate performance")
+st.title("🫀 Heart Disease Classification Dashboard")
+st.caption("Upload test data, select a trained model, and evaluate performance in real-time.")
+
+st.markdown("---")
 
 # -----------------------------
 # Download Sample Test Data
 # -----------------------------
 st.subheader("📥 Download Sample Test Data")
 
-TEST_DATA_PATH = "data/heart_test.csv"  # change if needed
+TEST_DATA_PATH = "data/testdata.csv"  # must match your saved test CSV
 
 if os.path.exists(TEST_DATA_PATH):
     test_df = pd.read_csv(TEST_DATA_PATH)
     csv_bytes = test_df.to_csv(index=False).encode("utf-8")
 
     st.download_button(
-        label="Download Sample Test CSV",
+        label="⬇️ Download Sample Test CSV",
         data=csv_bytes,
         file_name="heart_test_sample.csv",
         mime="text/csv"
     )
 else:
-    st.warning("Test CSV not found in repository.")
+    st.warning("⚠️ Sample test CSV not found. Please ensure `data/testdata.csv` exists.")
 
 st.markdown("---")
 
 # -----------------------------
 # Sidebar Controls
 # -----------------------------
-st.sidebar.header("⚙️ Controls")
+st.sidebar.header("⚙️ Model Controls")
 
 model_name = st.sidebar.selectbox(
-    "Choose Model",
+    "Select Model",
     ["Logistic Regression", "Decision Tree", "KNN", "Naive Bayes", "Random Forest", "XGBoost"]
 )
 
-uploaded_file = st.sidebar.file_uploader("Upload Test CSV", type=["csv"])
+uploaded_file = st.sidebar.file_uploader("Upload Test CSV (with target column)", type=["csv"])
+
+st.sidebar.markdown("---")
+st.sidebar.info("ℹ️ The uploaded CSV must contain a `target` column.")
 
 # -----------------------------
 # Main Evaluation Logic
@@ -55,8 +67,11 @@ uploaded_file = st.sidebar.file_uploader("Upload Test CSV", type=["csv"])
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
 
+    st.subheader("🗂 Uploaded Test Data Preview")
+    st.dataframe(df.head(), use_container_width=True)
+
     if "target" not in df.columns:
-        st.error("Uploaded CSV must contain a 'target' column for evaluation.")
+        st.error("❌ Uploaded CSV must contain a `target` column for evaluation.")
     else:
         X = df.drop("target", axis=1)
         y_true = df["target"]
@@ -64,7 +79,7 @@ if uploaded_file:
         model_path = f"model/{model_name}.pkl"
 
         if not os.path.exists(model_path):
-            st.error(f"Model file not found: {model_path}")
+            st.error(f"❌ Model file not found: {model_path}")
         else:
             model = joblib.load(model_path)
             y_pred = model.predict(X)
@@ -80,7 +95,7 @@ if uploaded_file:
             f1 = f1_score(y_true, y_pred)
             mcc = matthews_corrcoef(y_true, y_pred)
 
-            st.subheader("📊 Evaluation Metrics")
+            st.subheader("📊 Model Evaluation Metrics")
 
             col1, col2, col3, col4, col5, col6 = st.columns(6)
             col1.metric("Accuracy", f"{acc:.3f}")
@@ -93,7 +108,7 @@ if uploaded_file:
             st.markdown("---")
 
             # -----------------------------
-            # Classification Report (Table)
+            # Classification Report
             # -----------------------------
             st.subheader("📋 Classification Report")
 
@@ -102,7 +117,7 @@ if uploaded_file:
             st.dataframe(report_df, use_container_width=True)
 
             # -----------------------------
-            # Confusion Matrix (Heatmap)
+            # Confusion Matrix
             # -----------------------------
             st.subheader("📉 Confusion Matrix")
 
@@ -117,4 +132,4 @@ if uploaded_file:
             st.pyplot(fig)
 
 else:
-    st.info("👈 Upload a test CSV file from the sidebar to begin evaluation.")
+    st.info("👈 Upload a test CSV from the sidebar to begin model evaluation.")
