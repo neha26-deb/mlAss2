@@ -21,7 +21,11 @@ st.set_page_config(
 
 # Main Heading
 st.title("🤖 Machine Learning Assignment 2")
-
+st.markdown(
+    "<h3 style='margin-left:40px;'>Implementation, Evaluation and Deployment of Classification Models</h3>",
+    unsafe_allow_html=True
+)
+st.caption("Implementation, Evaluation and Deployment of Classification Models.")
 # Subheading
 st.subheader("Implementation, Evaluation and Deployment of Classification Models")
 
