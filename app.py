@@ -14,12 +14,12 @@ import matplotlib.pyplot as plt
 # Page Config
 # -----------------------------
 st.set_page_config(
-    page_title="Heart Disease Classification Dashboard",
-    page_icon="🫀",
+    page_title="Machine Learning Assignment 2 – Implementation, Evaluation and Deployment of Classification Models ",
+    page_icon="🤖",
     layout="wide"
 )
 
-st.title("🫀 Heart Disease Classification Dashboard")
+st.title("Machine Learning Assignment 2 – Implementation, Evaluation and Deployment of Classification Models ")
 st.caption("Upload test data, select a trained model, and evaluate performance in real-time.")
 
 st.markdown("---")
@@ -56,7 +56,7 @@ model_name = st.sidebar.selectbox(
     ["Logistic Regression", "Decision Tree", "KNN", "Naive Bayes", "Random Forest", "XGBoost"]
 )
 
-uploaded_file = st.sidebar.file_uploader("Upload Test CSV (with target column)", type=["csv"])
+uploaded_file = st.sidebar.file_uploader("Upload Test CSV", type=["csv"])
 
 
 # -----------------------------
@@ -128,6 +128,3 @@ if uploaded_file:
             ax.set_title(f"Confusion Matrix - {model_name}")
 
             st.pyplot(fig)
-
-else:
-    st.info("👈 Upload a test CSV from the sidebar to begin model evaluation.")
