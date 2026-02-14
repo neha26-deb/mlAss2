@@ -18,6 +18,7 @@ st.set_page_config(
     page_icon="🤖",
     layout="wide"
 )
+st.title("🤖 Machine Learning Assignment 2")
 st.markdown('<h1 class="main-header">Implementation, Evaluation and Deployment of Classification Models</h1>', unsafe_allow_html=True)
 # st.title("🤖 Machine Learning Assignment 2 – Implementation, Evaluation and Deployment of Classification Models ")
 st.caption("Upload test data, select a trained model, and evaluate performance in real-time.")
