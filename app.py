@@ -38,7 +38,7 @@ if os.path.exists(TEST_DATA_PATH):
     st.download_button(
         label="⬇️ Download Sample Test CSV",
         data=csv_bytes,
-        file_name="heart_test_sample.csv",
+        file_name="heart_test.csv",
         mime="text/csv"
     )
 else:
